@@ -10,18 +10,15 @@ from classes.database_manager import DataBaseManager
 
 class Server_Manager():
 
-    def __init__(self, file_path, table_flag, debug_flag, host ="127.0.0.1" , port= 65432 ):
+    def __init__(self, file_path, debug_flag, host ="127.0.0.1" , port= 65432 ):
 
         self.HOST = host
         self.PORT = port
         self.sel = selectors.DefaultSelector()
         #try:
-        self.db_m = DataBaseManager(file_path, table_flag, debug_flag)
+        self.db_m = DataBaseManager(file_path, debug_flag)
         #except:
         #    print("Cannot open database")
-
-        if table_flag:
-            succ = self.db_m.init_tables()
 
     def open_socket(self):
         try:
@@ -165,7 +162,7 @@ if __name__ == "__main__":
     #open socket
     print(sys.argv)
     
-    host_socket = Server_Manager()
+    host_socket = Server_Manager("./bases/DataBase", True)
     ret = host_socket.open_socket()
     host_socket.wait_clients()
     host_socket.close_socket()

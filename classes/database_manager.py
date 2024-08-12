@@ -156,7 +156,7 @@ class DataBaseManager:
                 if table == "items":
                     self.c.execute("DELETE from {} WHERE ID = '{}'".format(table, value))
                 else:
-                    self.c.execute("DELETE from {} WHERE ID = '{}'".format(table, value))
+                    self.c.execute("DELETE from {} WHERE name = '{}'".format(table, value))
                 return 1
             except sq.Error as er:
                 print(er)

@@ -33,7 +33,7 @@ if args.init:
         print("download failed")
         exit()
 
-sever_host = Server_Manager(args.path, args.table, False)
+sever_host = Server_Manager(args.path, False)
 #sever_host.vis_tables()
 ret = sever_host.open_socket()
 sever_host.wait_clients()

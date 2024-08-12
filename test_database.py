@@ -36,17 +36,14 @@ class TestDatabase(unittest.TestCase):
 
         line = ["sell" ,"header" ,"antique_and_art", "jotain", True ,100., 1, "00110" ,"new" ,"Matti Meikalainen", "01.01.2016" , "01.01.2015"] 
         res = self.dpM.insert_item(line)
-        self.assertEqual(res, 1)
-"""
+
         ##Modification
-        res = self.dpM.update_emp("employees", "Arttu", "Lehtonen", "status", "fired")
-        res = self.dpM.update_orders("orders", 10001, "Cas_No", "001")
-
+        res = self.dpM.update_user_record("Matti Meikalainen", "age", 21)
+        
         #Deletion
-        res = self.dpM.remove_emp(emp)
-        res = self.dpM.remove_product(10001)
+        res = self.dpM.remove("users","Matti Meikalainen")
 
-"""
+        self.assertEqual(res, 1)
 
 
 if __name__ == '__main__':
